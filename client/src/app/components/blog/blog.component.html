@@ -71,16 +71,24 @@
       {{ blog.body }}
     </div>
 
-    <!-- Panel Footer Start -->
+ <!-- Panel Footer Start -->
+ <div class="panel-footer">
+  <strong>Posted by: </strong>{{ blog.createdBy }}
+  <br />
+  <strong>Date: </strong>{{ blog.createdAt | date:'MMM dd, yyyy' }}
+  <br />
+  <div *ngIf="username === blog.createdBy">
+    
+  </div>
 
-    <!-- Edit Button -->
-    <a [routerLink]="['/edit-blog/', blog._id]" *ngIf="username === blog.createdBy">
-        <button type="button" name="button" class="btn btn-sm btn-info">Izmeni</button></a>
-    <!-- Delete Button -->
-    <a [routerLink]="['/delete-blog/', blog._id]" *ngIf="username === blog.createdBy">
-        <button type="button" name="button" class="btn btn-sm btn-danger">Obrisi</button></a> 
+  <!-- Edit Button -->
+  <a [routerLink]="['/edit-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-info">Edit</button></a>
+  <!-- Delete Button -->
+  <a [routerLink]="['/delete-blog/', blog._id]" *ngIf="username === blog.createdBy"><button type="button" name="button" class="btn btn-sm btn-danger">Delete</button></a>
 
-    <!-- Panel Footer End -->
+
+</div>
+<!-- Panel Footer End -->
 
     <!-- Post Comment Box: Start -->
     <ul class="list-group">

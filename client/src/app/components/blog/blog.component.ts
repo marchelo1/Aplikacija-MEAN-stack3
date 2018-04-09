@@ -31,24 +31,26 @@ export class BlogComponent implements OnInit {
     this.createCommentForm(); // Kreiranje forme za postravaljanje komentar na korisnikov post
   }
 
-  // Funkcija za kreiranje novog bloga
+   // Funkcija za kreiranje novog bloga
   createNewBlogForm() {
     this.form = this.formBuilder.group({
+      // Title field
       title: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(50),
         Validators.minLength(5),
         this.alphaNumericValidation
       ])],
+      // Body field
       body: ['', Validators.compose([
         Validators.required,
         Validators.maxLength(500),
         Validators.minLength(5)
       ])]
-    });
+    })
   }
 
-  // Kreiranje forme za postavljanje komentara
+   // Kreiranje forme za postavljanje komentara
   createCommentForm() {
     this.commentForm = this.formBuilder.group({
       comment: ['', Validators.compose([
@@ -56,7 +58,7 @@ export class BlogComponent implements OnInit {
         Validators.minLength(1),
         Validators.maxLength(200)
       ])]
-    });
+    })
   }
 
   // Omoguci formu komntara
